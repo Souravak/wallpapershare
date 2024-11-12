@@ -6,8 +6,85 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="./images/1" alt="">
-    <img src="./images/2" alt="">
-    <img src="./images/3" alt="">
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./images/1.jpg" alt="Image 1">
+            <div class="caption">Image 1</div>
+        </div>
+        <div class="gallery-item">
+            <img src="./images/2.jpg" alt="Image 2">
+            <div class="caption">Image 2</div>
+        </div>
+        <div class="gallery-item">
+            <img src="./images/3.jpg" alt="Image 3">
+            <div class="caption">Image 3</div>
+        </div>
+    </div>
+<script>
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        const img = item.querySelector('img');
+        const downloadButton = document.createElement('a');
+        downloadButton.href = img.src;
+        downloadButton.download = img.alt;
+        downloadButton.textContent = 'Download';
+        downloadButton.classList.add('download-button');
+        item.appendChild(downloadButton);
+    });
+</script>
+<style>
+    .download-button {
+        display: block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #007bff;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .download-button:hover {
+        background-color: #0056b3;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .gallery-item {
+        margin: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        transition: transform 0.2s;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.05);
+    }
+
+    .gallery-item .caption {
+        padding: 10px;
+        text-align: center;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+    }
+</style>
 </body>
 </html>
+
+
